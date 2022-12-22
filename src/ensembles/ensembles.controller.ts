@@ -6,10 +6,10 @@ import { EnsemblesService } from './ensembles.service';
 import { Ensemble } from './schemas/ensemble.schema';
 
 // To run server use these imports
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guards';
+//import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guards';
 
 // To run tests use these imports
-//import { JwtAuthGuard } from './../../src/auth/guards/jwt-auth.guards';
+import { JwtAuthGuard } from './../auth/guards/jwt-auth.guards';
 
 
 
@@ -139,6 +139,21 @@ export class EnsemblesController {
             }
         }).catch(() => {
             throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
+        })
+    }
+
+    // URL = /ensembles/admin/:adminId
+    @Delete("admin/:adminId")
+    DeleteByAdmin(@Param('adminId') adminId): Promise<any> {
+        return this.ensemblesService.deleteAllByAdmin(adminId).then((result) => {
+            // If one or more are delete - return resualt
+            if (result.deletedCount >= 1) {
+                return result
+            } else {
+                throw new HttpException('No ensembles with that ID', HttpStatus.NOT_FOUND)
+            }
+        }).catch(() => {
+            throw new HttpException('Bad request', HttpStatus.BAD_REQUEST)
         })
     }
 }

@@ -61,32 +61,6 @@ export class ProfilesService {
         return await this.profileModel.findByIdAndDelete(id);
     }
 
-    async addInstrument(id: string, instrument: InstrumentDTO): Promise<Profile> {
-        // Finds the specific profile's instrument array
-        const profile = await this.profileModel.findById(id);
-        const instrumentArray = profile.instruments;
-
-        // Adds the instrument to instrument array
-        instrumentArray.push(instrument);
-        return await profile.save();
-    }
-
-    async editInstrument(id: string, instrumentId: string, instrument: InstrumentDTO): Promise<Profile> {
-        // Finds the specific profile's instrument array
-        const profile = await this.profileModel.findById(id);
-        const instrumentArray = profile.instruments;
-
-        // Iterating through instrumentArray to find the index
-        // where it matches with the instrumentId given.
-        const index = instrumentArray.findIndex((instrument:any) => {
-            return instrument._id == instrumentId;
-        });
-
-        // Replaces old instrument values with new instrument values
-        instrumentArray[index] = instrument;
-        return await profile.save();
-    }
-
     async removeInstrument(id: string, instrumentId: string): Promise<Profile> {
         // Finds the specific profile's instrument array
         const profile = await this.profileModel.findById(id);
@@ -101,6 +75,56 @@ export class ProfilesService {
         profile.instruments = newInstrumentArray
 
         // Saves the new instrumentArray
+        return await profile.save();
+    }
+
+    async addInstrument(id: string, instrument: InstrumentDTO): Promise<Profile> {
+        // Finds the specific profile's instrument array
+        const profile = await this.profileModel.findById(id);
+        let instrumentArray = profile.instruments;
+        // An empty array is setup for validation further down in the code
+        let validationArray = [];
+
+        // Loops through the instrument array of the profile and checks if the name of the
+        // Instrument you are trying to add matches with any of the already existing item.
+        // If there is a match a string is pushed to the Validation array
+        instrumentArray.forEach((item) => {
+            if (item.instrumentName == instrument.instrumentName) {
+                validationArray.push("Instrument already in use")
+            }
+        })
+
+        // Adds the instrument to instrument array if the validation array is empty
+        if (validationArray.length == 0) {
+            instrumentArray.push(instrument);
+        }
+
+        // Profile is saved regardless
+        return await profile.save();
+    }
+
+    async editInstrument(id: string, instrumentId: string, instrument: InstrumentDTO): Promise<Profile> {
+        // Finds the specific profile's instrument array
+        const profile = await this.profileModel.findById(id);
+        let instrumentArray = profile.instruments;
+        let validationArray = [];
+
+        // Iterating through instrumentArray to find the index
+        // where it matches with the instrumentId given.
+        const index = instrumentArray.findIndex((instrument:any) => {
+            return instrument._id == instrumentId;
+        });
+
+        instrumentArray.forEach((item) => {
+            if (item.skillLevel == instrument.skillLevel && item.instrumentName == instrument.instrumentName) {
+                validationArray.push("Instrument already in use")
+            } 
+        })
+
+        // Replaces old instrument values with new instrument values
+        if (validationArray.length == 0) {
+        instrumentArray[index] = instrument;
+        }
         return await profile.save();
     }
 

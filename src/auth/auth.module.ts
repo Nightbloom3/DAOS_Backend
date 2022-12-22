@@ -7,12 +7,12 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 
 // To run server use these imports
-import { ProfilesModule } from 'src/profiles/profiles.module';
-import { ProfilesController } from 'src/profiles/profiles.controller';
+// import { ProfilesModule } from 'src/profiles/profiles.module';
+// import { ProfilesController } from 'src/profiles/profiles.controller';
 
 // To run tests use these imports
-// import { ProfilesModule } from './../../src/profiles/profiles.module';
-// import { ProfilesController } from './../../src/profiles/profiles.controller';
+import { ProfilesModule } from './../profiles/profiles.module';
+import { ProfilesController } from './../profiles/profiles.controller';
 
 @Module({
   imports: [

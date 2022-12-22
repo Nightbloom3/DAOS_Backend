@@ -45,6 +45,8 @@ describe('AppController (e2e)', () => {
       const newProfile = new CreateProfileDTO(
         'Kasper', //firstName - required
         'Tester', //lastName - required
+        'Copenhagen', // City
+        '1050', // ZipCode
         'test@gmail.com', //email - required
         '99999999', //password
         true, //conditions
@@ -77,6 +79,8 @@ describe('AppController (e2e)', () => {
       const newProfile = new CreateProfileDTO(
         'Kasper', //firstName
         'Tester', //lastName
+        'Copenhagen', // City
+        '1050', // ZipCode
         'testgmail.com', //email
         '99999999', //password
         true, //conditions
@@ -104,6 +108,8 @@ describe('AppController (e2e)', () => {
       const newProfile = new CreateProfileDTO(
         'Kasper', //firstName
         'Tester', //lastName
+        'Copenhagen', // City
+        '1050', // ZipCode
         'test@gmail.com', //email
         '', //password
         true, //conditions
@@ -131,6 +137,8 @@ describe('AppController (e2e)', () => {
       const newProfile = new CreateProfileDTO(
         '', //firstName
         'Tester', //lastName
+        'Copenhagen', // City
+        '1050', // ZipCode
         'test@gmail.com', //email
         '99999999', //password
         true, //conditions
@@ -158,6 +166,8 @@ describe('AppController (e2e)', () => {
       const newProfile = new CreateProfileDTO(
         'Kasper', //firstName
         '', //lastName
+        'Copenhagen', // City
+        '1050', // ZipCode
         'test@gmail.com', //email
         '99999999', //password
         true, //conditions
@@ -185,6 +195,8 @@ describe('AppController (e2e)', () => {
       const newProfile = new CreateProfileDTO(
         '123', //firstName
         'Tester', //lastName
+        'Copenhagen', // City
+        '1050', // ZipCode
         'test@gmail.com', //email
         '99999999', //password
         true, //conditions
@@ -210,6 +222,8 @@ describe('AppController (e2e)', () => {
       const loginProfile = new CreateProfileDTO(
         'Kasper', //firstName
         'Tester', //lastName
+        'Copenhagen', // City
+        '1050', // ZipCode
         'test@gmail.com', //email
         '99999999', //password
         true, //conditions
@@ -259,6 +273,8 @@ describe('AppController (e2e)', () => {
       const myProfile = new CreateProfileDTO(
         'Kasper', //firstName
         'Tester', //lastName
+        'Copenhagen', // City
+        '1050', // ZipCode
         'test@gmail.com', //email
         '99999999', //password
         true, //conditions
@@ -287,6 +303,8 @@ describe('AppController (e2e)', () => {
       const myProfile = new CreateProfileDTO(
         'Kasper', //firstName
         'Tester', //lastName
+        'Copenhagen', // City
+        '1050', // ZipCode
         'test@gmail.com', //email
         '99999999', //password
         true, //conditions
@@ -316,6 +334,8 @@ describe('AppController (e2e)', () => {
         const getAllProfilesObject1 = new CreateProfileDTO(
           'Jens',
           'Tester',
+          'Copenhagen', // City
+          '1050', // ZipCode
           'Fake@mail.dk',
           'MyPassword123',
           true,
@@ -325,6 +345,8 @@ describe('AppController (e2e)', () => {
         const getAllProfilesObject2 = new CreateProfileDTO(
           'Peter',
           'Tester',
+          'Copenhagen', // City
+          '1050', // ZipCode
           'SuperFake@mail.dk',
           'MyPassword1234',
           true,
@@ -337,6 +359,8 @@ describe('AppController (e2e)', () => {
         const SignUpProfile = new CreateProfileDTO(
           'Kasper',
           'Tester',
+          'Copenhagen', // City
+          '1050', // ZipCode
           'test@mail.dk',
           '123456789',
           true,
@@ -366,6 +390,8 @@ describe('AppController (e2e)', () => {
         const getAllProfilesObject1 = new CreateProfileDTO(
           'Jens',
           'Tester',
+          'Copenhagen', // City
+          '1050', // ZipCode
           'Fake@mail.dk',
           'MyPassword123',
           true,
@@ -375,6 +401,8 @@ describe('AppController (e2e)', () => {
         const getAllProfilesObject2 = new CreateProfileDTO(
           'Peter',
           'Tester',
+          'Copenhagen', // City
+          '1050', // ZipCode
           'SuperFake@mail.dk',
           'MyPassword1234',
           true,
@@ -402,6 +430,8 @@ describe('AppController (e2e)', () => {
         const getAllProfilesObject1 = new CreateProfileDTO(
           'Jens',
           'Tester',
+          'Copenhagen', // City
+          '1050', // ZipCode
           'Fake@mail.dk',
           'MyPassword123',
           true,
@@ -411,6 +441,8 @@ describe('AppController (e2e)', () => {
         const getAllProfilesObject2 = new CreateProfileDTO(
           'Peter',
           'Tester',
+          'Copenhagen', // City
+          '1050', // ZipCode
           'SuperFake@mail.dk',
           'MyPassword1234',
           true,
@@ -423,6 +455,8 @@ describe('AppController (e2e)', () => {
         const SignUpProfile = new CreateProfileDTO(
           'Kasper',
           'Tester',
+          'Copenhagen', // City
+          '1050', // ZipCode
           'test@mail.dk',
           '123456789',
           true,

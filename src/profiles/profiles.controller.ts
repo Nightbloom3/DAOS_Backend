@@ -8,14 +8,14 @@ import { ProfilesService } from './profiles.service';
 import { Profile } from './schemas/profile.schema';
 
 // To run server use these imports
-import { AuthService } from 'src/auth/auth.service';
-import { LocalAuthGuard } from 'src/auth/guards/local-auth.guard';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guards';
+// import { AuthService } from 'src/auth/auth.service';
+// import { LocalAuthGuard } from 'src/auth/guards/local-auth.guard';
+// import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guards';
 
 // To run tests use these imports
-// import { AuthService } from './../../src/auth/auth.service';
-// import { JwtAuthGuard } from './../../src/auth/guards/jwt-auth.guards';
-// import { LocalAuthGuard } from './../../src/auth/guards/local-auth.guard';
+import { AuthService } from './../auth/auth.service';
+import { JwtAuthGuard } from './../auth/guards/jwt-auth.guards';
+import { LocalAuthGuard } from './../auth/guards/local-auth.guard';
 
 @Controller('profiles')
 export class ProfilesController {
@@ -136,7 +136,11 @@ export class ProfilesController {
     addInstrument(@Param('id') id, @Body() addInstrument: InstrumentDTO): Promise<Profile> {
         return this.profilesService.addInstrument(id, addInstrument).then((result) => {
             if(result) {
-                return result;
+                if (result.instruments.some((instrument) => instrument.instrumentName === addInstrument.instrumentName)) {
+                    throw new HttpException('Not Acceptable', HttpStatus.NOT_ACCEPTABLE);
+                } else {
+                    return result;
+                }
             } else {
                 throw new HttpException('Profile not found', HttpStatus.NOT_FOUND);
             }
@@ -173,4 +177,5 @@ export class ProfilesController {
             throw new HttpException('Bad request', HttpStatus.BAD_REQUEST);
         });
     }
+
 }
