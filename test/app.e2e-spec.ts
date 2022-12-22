@@ -5,20 +5,6 @@ import { TestModule } from './../src/test.module';
 import { ProfilesService } from './../src/profiles/profiles.service';
 import { CreateProfileDTO } from './../src/profiles/dtos/create-profile.dto';
 
-// When runing tests, imports have failed in the following files
-// while the server ran fine
-// the problem was going back in folders, and then entering them
-// before we had -> import { AuthService } from 'src/auth/auth.service'; -> server ran fine
-// here the server failed -> import { AuthService } from './../../auth/auth.service'; -> but tests ran fine
-// Now we use -> import { AuthService } from './../auth/auth.service'; and this is able to run the SERVER and TEST
-/*
-  - Profile Controller
-  - Auth Service
-  - Auth Module
-  - Ensemble Controller
-  - Ensemble Schema
-*/
-
 describe('AppController (e2e)', () => {
   let app: INestApplication;
   let profilesService: ProfilesService;
