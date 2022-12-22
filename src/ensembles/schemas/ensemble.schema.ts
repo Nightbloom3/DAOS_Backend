@@ -1,13 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-
-// To run server use these imports
-//import { Profile } from 'src/profiles/schemas/profile.schema';
-
-// To run tests use these imports
-//import { Profile } from './../../../src/profiles/schemas/profile.schema';
 import { Profile } from './../../profiles/schemas/profile.schema';
-// cannot read if the folder steps more step back -- WHY?!
 
 import * as mongoose from 'mongoose';
 

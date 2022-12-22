@@ -6,13 +6,6 @@ import { UpdatePasswordProfileDTO } from './dtos/update-password-profile.dto';
 import { UpdateProfileDTO } from './dtos/update-profile.dto';
 import { ProfilesService } from './profiles.service';
 import { Profile } from './schemas/profile.schema';
-
-// To run server use these imports
-// import { AuthService } from 'src/auth/auth.service';
-// import { LocalAuthGuard } from 'src/auth/guards/local-auth.guard';
-// import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guards';
-
-// To run tests use these imports
 import { AuthService } from './../auth/auth.service';
 import { JwtAuthGuard } from './../auth/guards/jwt-auth.guards';
 import { LocalAuthGuard } from './../auth/guards/local-auth.guard';

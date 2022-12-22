@@ -1,11 +1,6 @@
 import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-
-// To run server use these imports
-//import { ProfilesService } from 'src/profiles/profiles.service';
-
-// To run tests use these imports
 import { ProfilesService } from './../profiles/profiles.service';
 
 @Injectable()
