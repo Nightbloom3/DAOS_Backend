@@ -136,11 +136,7 @@ export class ProfilesController {
     addInstrument(@Param('id') id, @Body() addInstrument: InstrumentDTO): Promise<Profile> {
         return this.profilesService.addInstrument(id, addInstrument).then((result) => {
             if(result) {
-                if (result.instruments.some((instrument) => instrument.instrumentName === addInstrument.instrumentName)) {
-                    throw new HttpException('Not Acceptable', HttpStatus.NOT_ACCEPTABLE);
-                } else {
-                    return result;
-                }
+                return result;
             } else {
                 throw new HttpException('Profile not found', HttpStatus.NOT_FOUND);
             }
@@ -148,6 +144,7 @@ export class ProfilesController {
             throw new HttpException('Bad request', HttpStatus.BAD_REQUEST);
         });
     }
+
 
     // URL = /profiles/:id/instrument/:id
     @UseGuards(JwtAuthGuard)
@@ -177,5 +174,4 @@ export class ProfilesController {
             throw new HttpException('Bad request', HttpStatus.BAD_REQUEST);
         });
     }
-
 }

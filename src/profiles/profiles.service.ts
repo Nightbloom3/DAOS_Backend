@@ -81,33 +81,17 @@ export class ProfilesService {
     async addInstrument(id: string, instrument: InstrumentDTO): Promise<Profile> {
         // Finds the specific profile's instrument array
         const profile = await this.profileModel.findById(id);
-        let instrumentArray = profile.instruments;
-        // An empty array is setup for validation further down in the code
-        let validationArray = [];
+        const instrumentArray = profile.instruments;
 
-        // Loops through the instrument array of the profile and checks if the name of the
-        // Instrument you are trying to add matches with any of the already existing item.
-        // If there is a match a string is pushed to the Validation array
-        instrumentArray.forEach((item) => {
-            if (item.instrumentName == instrument.instrumentName) {
-                validationArray.push("Instrument already in use")
-            }
-        })
-
-        // Adds the instrument to instrument array if the validation array is empty
-        if (validationArray.length == 0) {
-            instrumentArray.push(instrument);
-        }
-
-        // Profile is saved regardless
+        // Adds the instrument to instrument array
+        instrumentArray.push(instrument);
         return await profile.save();
     }
 
     async editInstrument(id: string, instrumentId: string, instrument: InstrumentDTO): Promise<Profile> {
         // Finds the specific profile's instrument array
         const profile = await this.profileModel.findById(id);
-        let instrumentArray = profile.instruments;
-        let validationArray = [];
+        const instrumentArray = profile.instruments;
 
         // Iterating through instrumentArray to find the index
         // where it matches with the instrumentId given.
@@ -115,16 +99,8 @@ export class ProfilesService {
             return instrument._id == instrumentId;
         });
 
-        instrumentArray.forEach((item) => {
-            if (item.skillLevel == instrument.skillLevel && item.instrumentName == instrument.instrumentName) {
-                validationArray.push("Instrument already in use")
-            } 
-        })
-
         // Replaces old instrument values with new instrument values
-        if (validationArray.length == 0) {
         instrumentArray[index] = instrument;
-        }
         return await profile.save();
     }
 
