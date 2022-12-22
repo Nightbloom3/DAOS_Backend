@@ -4,11 +4,6 @@ import { EditEnsembleDTO } from './dtos/edit-ensemble.dto';
 import { PostEnsembleDTO } from './dtos/post-ensemble.dto';
 import { EnsemblesService } from './ensembles.service';
 import { Ensemble } from './schemas/ensemble.schema';
-
-// To run server use these imports
-//import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guards';
-
-// To run tests use these imports
 import { JwtAuthGuard } from './../auth/guards/jwt-auth.guards';
 
 
